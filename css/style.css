@@ -1,94 +1,49 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Added per instructions */
-    font-family: Arial, Helvetica, sans-serif;
+.card-grid { /* Main content area with a grid layout */
+    display: grid; /* Use CSS Grid for layout */
+    gap: 15px; /* Space between grid items */
 }
 
-body {
-    background-color: antiquewhite;
+.card-one { /* First card in the grid */
+    background-color: blueviolet;
 }
 
-/* --- Mobile-First Base Styles (< 768px) Requirement --- */
-.navbar {
-    display: flex;
-    flex-direction: column; /*column to stack vertically */
-    align-items: center; 
-    background-color: aquamarine;
-    padding: 20px;
+.card-two { /* Second card in the grid */
+    background-color: aqua;
 }
 
-.nav-links {
-    display: flex;
-    flex-direction: row; /* Nav items sit in a line */
-    list-style-type: none;
-    gap: 30px; /*gaps between nav items */
-    padding: 10px 0; /* Padding for spacing around the nav links */
+.card-three { /* Third card in the grid */
+    background-color: chartreuse;
 }
 
-.nav-links li a {
-    text-decoration: none; /* Remove underline from links */
-    color: blue;
-}
 
-.container {
-    max-width: 900px; /* Set a maximum width for the container */
-    margin: 0 auto;
-    padding: 20px;    
-}
 
-.bio-hero {
-    text-align: center;
-    padding: 20px 0;
-}
+@media(min-width: 768px){ /* Styles for larger screens */
 
-.card-grid {
-    display: flex;
-    flex-direction: column; /* Stack layout grid containers vertically by default */
-    gap: 20px;
-    padding: 20px 0;
-    border: #ccc 20px;
-}
-
-.card {
-    flex-basis: 100%; /* Mobile assignment rule: flex-basis 100% on cards */
-    background-color: white; 
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 20px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* For smooth interaction */
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #eee;
-    margin-top: 40px;
-}
-
-/* --- Interactive Styling Requirement --- */
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Subtle elevation box-shadow on hover */
-}
-
-/* --- Responsive Breakpoint (>= 768px) Requirement --- */
-@media (min-width: 768px) {
-    
-    /* Desktop Flex Alignment Requirements */
-    .navbar {
-        flex-direction:column; /* Switch navigation layout container to row */
-        justify-content: space-between;  
+    body { /* Use CSS Grid for the body layout */
+        display: grid;
+        grid-template-columns: 200px 1fr; /* Two columns: 200px for the sidebar, 1fr for the main content */
+        gap: 15px; /* Space between grid items */
     }
 
-    .card {
-        flex-basis: 30%; 
-        justify-content: space-between; 
-    }
-    .card-grid {
-        flex-direction: row; /* Switch layout container to row */
-        align-items: stretch;
+    header,
+    footer { /* Header and footer span the full width of the grid */
+        grid-column: 1 / -1;
     }
 
-   
+    nav { /* Navigation that will go on the left sidebar */
+        grid-column: 1;
+    }
+
+    .card-grid { /* Main content area with a grid layout, 
+        .card-grid is the parent container.
+The cards inside it are the children.
+Grid controls how those children are arranged.  */
+        grid-column: 2;
+    }
+
+    .inner-cards { /* Container for the second and third cards, something that will go on the side */
+        display: grid; /* Use CSS Grid for layout */
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 15px;
+    }
 }
